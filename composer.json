@@ -14,8 +14,8 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/adampatterson/Request/issues",
-    "source": "https://github.com/adampatterson/Request"
+    "issues": "https://github.com/adampatterson/request/issues",
+    "source": "https://github.com/adampatterson/request"
   },
   "require-dev": {
     "phpunit/phpunit": "^13.0"

@@ -7,7 +7,7 @@
 
 ## View on [Packagist](https://packagist.org/packages/adampatterson/request)
 
-```bash
+```shell
 composer require adampatterson/request
 ```
 
@@ -43,15 +43,26 @@ $root      = Request::root();      // Root URL
 
 ## Tests
 
-```bash
+```shell
 composer install
 composer test
 ```
 
 ## Local Dev
 
-Run from the theme root.
+Without needing to modify the composer.json file. Run from the theme root, this will symlink the package into the theme's vendor directory.
 
-```bash
+```shell
 ln -s ~/Sites/packages/Request/ ./vendor/adampatterson/request
+```
+
+Otherwise, you can add the local package to your `composer.json` file.
+
+```shell
+  "repositories": [
+    {
+      "type": "path",
+      "url": "/Sites/packages/request"
+    }
+     ],
 ```
