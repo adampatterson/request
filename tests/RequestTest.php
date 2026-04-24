@@ -1,13 +1,110 @@
 <?php
 
-use Numeral\Numeral;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Request\MakeRequest;
+use Request\Request;
 
 class RequestTest extends TestCase
 {
-
-    public function testNumberFormatWhole()
+    protected function setUp(): void
     {
-        $this->assertEquals(1234, 1234);
+        parent::setUp();
+        // Clear global variables before each test to ensure clean state
+        $_SERVER = [];
+        $_GET = [];
+        $_POST = [];
+        $_COOKIE = [];
+        $_FILES = [];
+    }
+
+    #[Test]
+    public function it_returns_the_instance()
+    {
+        $request = MakeRequest::new();
+        $this->assertInstanceOf(Symfony\Component\HttpFoundation\Request::class, $request->instance());
+    }
+
+    #[Test]
+    public function it_can_be_called_statically()
+    {
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+
+        $this->assertEquals('POST', Request::method());
+    }
+
+    #[Test]
+    public function it_returns_the_request_method()
+    {
+        $_SERVER['REQUEST_METHOD'] = 'PUT';
+
+        $request = MakeRequest::new();
+        $this->assertEquals('PUT', $request->method());
+    }
+
+    #[Test]
+    public function it_returns_the_root()
+    {
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['PHP_SELF'] = '/index.php';
+
+        $request = MakeRequest::new();
+        $this->assertEquals('http://example.com', $request->root());
+    }
+
+    #[Test]
+    public function it_returns_the_uri()
+    {
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['REQUEST_URI'] = '/test/path?query=1';
+        $_SERVER['QUERY_STRING'] = 'query=1';
+
+        $request = MakeRequest::new();
+        $this->assertEquals('http://example.com/test/path?query=1', $request->uri());
+    }
+
+    #[Test]
+    public function it_returns_client_ip()
+    {
+        $_SERVER['REMOTE_ADDR'] = '192.168.1.100';
+
+        $request = MakeRequest::new();
+        $this->assertEquals('192.168.1.100', $request->ip());
+    }
+
+    #[Test]
+    public function it_returns_user_agent()
+    {
+        $_SERVER['HTTP_USER_AGENT'] = 'PHPUnit Test Agent';
+
+        $request = MakeRequest::new();
+        $this->assertEquals('PHPUnit Test Agent', $request->userAgent());
+    }
+
+    #[Test]
+    public function it_can_get_a_value()
+    {
+        $_GET['foo'] = 'bar';
+        $_POST['test'] = 'value'; // Symfony request get() checks query, request, etc.
+
+        $request = MakeRequest::new();
+
+        $this->assertEquals('bar', $request->get('foo'));
+        $this->assertEquals('value', $request->get('test'));
+        $this->assertEquals('default', $request->get('missing', 'default'));
+    }
+
+    #[Test]
+    public function it_can_get_all_query_values()
+    {
+        $_GET = [
+            'foo' => 'bar',
+            'baz' => 'qux',
+        ];
+
+        // MakeRequest->all() specifically calls $this->request->query->all() which maps to $_GET
+        $request = MakeRequest::new();
+
+        $this->assertEquals($_GET, $request->all());
     }
 }
