@@ -1,9 +1,14 @@
 <?php
 
-namespace Request;
+namespace Request\Actions;
 
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class MakeRequest
+ *
+ * @mixin Request
+ */
 class MakeRequest
 {
 
@@ -130,7 +135,7 @@ class MakeRequest
      * @param  string  $method
      * @return array
      */
-    public function all($method = 'GET'): array
+    public function all(string $method = 'GET'): array
     {
         return match ($method) {
             'get', 'GET'       => $this->request->query->all(),

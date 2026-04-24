@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Request\MakeRequest;
+use Request\Actions\MakeRequest;
 use Request\Request;
 
 class RequestTest extends TestCase
@@ -21,7 +21,7 @@ class RequestTest extends TestCase
     #[Test]
     public function it_returns_the_instance()
     {
-        $request = MakeRequest::new();
+        $request = Request::new();
         $this->assertInstanceOf(Symfony\Component\HttpFoundation\Request::class, $request->instance());
     }
 
@@ -48,8 +48,7 @@ class RequestTest extends TestCase
         $_SERVER['HTTP_HOST'] = 'example.com';
         $_SERVER['PHP_SELF'] = '/index.php';
 
-        $request = MakeRequest::new();
-        $this->assertEquals('http://example.com', $request->root());
+        $this->assertEquals('http://example.com', Request::root());
     }
 
     #[Test]
@@ -59,8 +58,7 @@ class RequestTest extends TestCase
         $_SERVER['REQUEST_URI'] = '/test/path?query=1';
         $_SERVER['QUERY_STRING'] = 'query=1';
 
-        $request = MakeRequest::new();
-        $this->assertEquals('http://example.com/test/path?query=1', $request->uri());
+        $this->assertEquals('http://example.com/test/path?query=1', Request::uri());
     }
 
     #[Test]
