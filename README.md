@@ -11,6 +11,36 @@
 composer require adampatterson/request
 ```
 
+## Usage
+
+```php
+use Request\Request;
+
+// Get a value from the request (checks $_GET first, then $_POST)
+$name = Request::get('name');
+
+// Get a value with a default fallback
+$page = Request::get('page', 1);
+
+// Get all GET parameters
+$query = Request::all('GET');
+
+// Get all POST parameters
+$post = Request::all('POST');
+
+// Check if a query parameter exists
+if (Request::has('search')) {
+    // ...
+}
+
+// Get request information
+$method    = Request::method();    // GET, POST, etc.
+$ip        = Request::ip();        // Client IP
+$userAgent = Request::userAgent(); // Browser User Agent
+$uri       = Request::uri();       // Full request URI
+$root      = Request::root();      // Root URL
+```
+
 ## Tests
 
 ```bash

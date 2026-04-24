@@ -8,22 +8,10 @@ class MakeRequest
 {
 
     /** @var Request */
-    protected $request;
+    protected Request $request;
 
     /** @var string|null */
-    protected $pathInfo;
-
-    /** @var string|null */
-    protected $requestUri;
-
-    /** @var string|null */
-    protected $baseUrl;
-
-    /** @var string|null */
-    protected $basePath;
-
-    /** @var string|null */
-    protected $method;
+    protected ?string $method;
 
     /**
      * Create a new MakeRequest instance.
@@ -31,7 +19,7 @@ class MakeRequest
      * @param  mixed  ...$args
      * @return static
      */
-    public static function new(...$args)
+    public static function new(...$args): static
     {
         return new self(...$args);
     }
@@ -111,16 +99,17 @@ class MakeRequest
      * $this->request->get
      *
      * @param  string  $key
-     * @param  mixed  $default
-     *
+     * @param  string|null  $default
      * @return mixed
      */
-    public function get(string $key, $default = null): mixed
+    public function get(string $key, ?string $default = null): mixed
     {
         if ($this->request->query->has($key)) {
+            // $_GET
             return $this->request->query->get($key);
         }
 
+        // $_POST
         return $this->request->request->get($key, $default);
     }
 
