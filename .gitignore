@@ -1,8 +1,10 @@
 /vendor
 composer.lock
 .idea
+.tinker
+.junie
 .DS_Store
 /.phpunit.result.cache
 /.phpunit.cache
-
 /.output.txt
+/coverage-report
