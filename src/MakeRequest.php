@@ -42,12 +42,6 @@ class MakeRequest
     public function __construct()
     {
         $this->request = Request::createFromGlobals();
-
-        $this->pathInfo = null;
-        $this->requestUri = null;
-        $this->baseUrl = null;
-        $this->basePath = null;
-        $this->method = null;
     }
 
     /**
