@@ -14,22 +14,22 @@ class MakeRequest
     protected ?string $method;
 
     /**
-     * Create a new MakeRequest instance.
-     *
-     * @param  mixed  ...$args
-     * @return static
-     */
-    public static function new(...$args): static
-    {
-        return new self(...$args);
-    }
-
-    /**
      * MakeRequest constructor.
      */
     public function __construct()
     {
         $this->request = Request::createFromGlobals();
+    }
+
+    /**
+     * Create a new MakeRequest instance.
+     *
+     * @param  mixed  ...$args
+     * @return static
+     */
+    public static function new(...$args): self
+    {
+        return new self(...$args);
     }
 
     /**
@@ -137,5 +137,18 @@ class MakeRequest
             'post', 'POST'     => $this->request->request->all(),
             'cookie', 'COOKIE' => $this->request->cookies->all(),
         };
+    }
+
+    /**
+     * Proxy unknown method calls to the underlying Symfony HTTP Foundation.
+     *
+     * @param  string  $method
+     * @param  array<int, mixed>  $args
+     *
+     * @return mixed
+     */
+    public function __call(string $method, array $args)
+    {
+        return $this->request->{$method}(...$args);
     }
 }

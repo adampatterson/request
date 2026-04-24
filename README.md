@@ -41,6 +41,20 @@ $uri       = Request::uri();       // Full request URI
 $root      = Request::root();      // Root URL
 ```
 
+## Method Proxying
+
+The `Request` class proxies unknown method calls to the underlying Symfony HTTP Foundation `Request` instance. This allows you to use any method provided by Symfony's Request object.
+
+```php
+use Request\Request;
+
+// getPathInfo() is a Symfony Request method
+$path = Request::getPathInfo();
+
+// You can also access the underlying Symfony Request instance directly
+$symfonyRequest = Request::instance();
+```
+
 ## Tests
 
 ```shell

@@ -19,7 +19,7 @@ class Request
      * @param  array  $args
      * @return mixed
      */
-    public static function __callStatic($method, $args)
+    public static function __callStatic(string $method, array $args)
     {
         return MakeRequest::new()->{$method}(...$args);
     }

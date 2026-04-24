@@ -107,4 +107,16 @@ class RequestTest extends TestCase
 
         $this->assertEquals($_GET, $request->all());
     }
+
+    #[Test]
+    public function it_proxies_method_calls_to_the_underlying_request()
+    {
+        $_SERVER['REQUEST_URI'] = '/test-path';
+
+        $request = MakeRequest::new();
+
+        // getPathInfo() is a method on Symfony's Request, but not on MakeRequest
+        $this->assertEquals('/test-path', $request->getPathInfo());
+        $this->assertEquals('/test-path', Request::getPathInfo());
+    }
 }
