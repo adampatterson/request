@@ -16,12 +16,22 @@ class RequestTest extends TestCase
         $_POST = [];
         $_COOKIE = [];
         $_FILES = [];
+
+        Request::clearResolvedInstance();
+    }
+
+    #[Test]
+    public function it_is_a_singleton(): void
+    {
+        $instance1 = Request::resolveInstance();
+        $instance2 = Request::resolveInstance();
+
+        $this->assertSame($instance1, $instance2);
     }
 
     #[Test]
     public function it_returns_the_instance(): void
     {
-        $request = Request::new();
         $this->assertInstanceOf(Symfony\Component\HttpFoundation\Request::class, Request::instance());
     }
 
