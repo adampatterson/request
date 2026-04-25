@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Request\Actions\MakeRequest;
 use Request\Request;
 
 class RequestTest extends TestCase

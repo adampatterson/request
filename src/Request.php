@@ -9,7 +9,7 @@ use Request\Actions\MakeRequest;
  *
  * @package Request
  * @author Adam Patterson <http://github.com/adampatterson>
- * @link  https://github.com/adampatterson/Request
+ * @link  https://github.com/adampatterson/request
  *
  * @method static \Symfony\Component\HttpFoundation\Request instance()
  * @method static string method()

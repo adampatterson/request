@@ -69,16 +69,18 @@ composer test
 Without needing to modify the composer.json file. Run from the theme root, this will symlink the package into the theme's vendor directory.
 
 ```shell
-ln -s ~/Sites/packages/Request/ ./vendor/adampatterson/request
+ln -s ~/Sites/packages/request/ ./vendor/adampatterson/request
 ```
 
 Otherwise, you can add the local package to your `composer.json` file.
 
-```shell
+```json
+{
   "repositories": [
     {
       "type": "path",
       "url": "/Sites/packages/request"
     }
-     ],
+  ]
+}
 ```
