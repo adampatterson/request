@@ -1,6 +1,8 @@
 # Request PHP
 
-![PHP Composer](https://github.com/adampatterson/Request/workflows/PHP%20Composer/badge.svg?branch=main)
+![PHP Composer](https://github.com/adampatterson/request/workflows/run-tests/badge.svg?branch=main)
+[![Packagist Version](https://img.shields.io/packagist/v/adampatterson/request)](https://packagist.org/packages/adampatterson/request)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/adampatterson/request)](https://packagist.org/packages/adampatterson/request/stats)
 
 > [!NOTE]
 > This script is still under development.
