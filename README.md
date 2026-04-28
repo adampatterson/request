@@ -66,7 +66,7 @@ composer test
 
 ## Local Dev
 
-Without needing to modify the composer.json file. Run from the theme root, this will symlink the package into the theme's vendor directory.
+Without needing to modify the `composer.json` file. Run from the theme root, this will symlink the package into the theme's vendor directory.
 
 ```shell
 ln -s ~/Sites/packages/request/ ./vendor/adampatterson/request
