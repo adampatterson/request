@@ -3,9 +3,10 @@ composer.lock
 .idea
 .tinker
 .junie
+.src
 .DS_Store
 /.phpunit.result.cache
 /.phpunit.cache
 /.output.txt
 /coverage-report
-/.src
+/build

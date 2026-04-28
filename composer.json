@@ -29,8 +29,14 @@
       "Request\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Request\\Tests\\": "tests/"
+    }
+  },
   "scripts": {
     "test": "phpunit",
-    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
+    "test:warnings": "phpunit --display-warnings",
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text",
   }
 }
