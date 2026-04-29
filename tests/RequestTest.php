@@ -1,8 +1,11 @@
 <?php
 
+namespace Request\Tests;
+
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Request\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class RequestTest extends TestCase
 {
@@ -31,7 +34,7 @@ class RequestTest extends TestCase
     #[Test]
     public function it_returns_the_instance(): void
     {
-        $this->assertInstanceOf(Symfony\Component\HttpFoundation\Request::class, Request::instance());
+        $this->assertInstanceOf(SymfonyRequest::class, Request::instance());
     }
 
     #[Test]

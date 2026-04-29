@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MakeRequest
 {
-
     /** @var Request */
     protected Request $request;
 

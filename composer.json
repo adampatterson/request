@@ -1,42 +1,46 @@
 {
-  "name": "adampatterson/request",
-  "description": "Simple request wrapper for Symfony HTTP Foundation",
-  "keywords": [
-    "request",
-    "symfony"
-  ],
-  "license": "MIT",
-  "type": "library",
-  "authors": [
-    {
-      "name": "Adam Patterson",
-      "email": "hello@adampatterson.ca"
+    "name": "adampatterson/request",
+    "description": "Simple request wrapper for Symfony HTTP Foundation",
+    "keywords": [
+        "request",
+        "symfony"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Adam Patterson",
+            "email": "hello@adampatterson.ca"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/adampatterson/request/issues",
+        "source": "https://github.com/adampatterson/request"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.0",
+        "psy/psysh": "^0.12.22",
+        "laravel/pint": "^1.29"
+    },
+    "require": {
+        "symfony/http-foundation": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Request\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Request\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:warnings": "phpunit --display-warnings",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text",
+        "pint": "pint",
+        "pint:test": "pint --test",
+        "pint:dirty": "pint --dirty"
     }
-  ],
-  "support": {
-    "issues": "https://github.com/adampatterson/request/issues",
-    "source": "https://github.com/adampatterson/request"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^13.0",
-    "psy/psysh": "^0.12.22"
-  },
-  "require": {
-    "symfony/http-foundation": "^8.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Request\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Request\\Tests\\": "tests/"
-    }
-  },
-  "scripts": {
-    "test": "phpunit",
-    "test:warnings": "phpunit --display-warnings",
-    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
-  }
 }
