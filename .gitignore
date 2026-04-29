@@ -10,3 +10,4 @@ composer.lock
 /.output.txt
 /coverage-report
 /build
+/AGENTS.md
